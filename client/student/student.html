@@ -1,0 +1,57 @@
+<template name="student">
+    <h1>Student Courses</h1>
+    {{> reactiveTable settings=settings}}
+</template>
+
+<template name="studentEdit">
+    <div id="student-edit" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <form class="form" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Student</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input required class="form-control" type="text" value="" id="student-name"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input required class="form-control" type="email" value="" id="student-email"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input required class="form-control" type="text" value="" id="student-username"/>
+                        </div>
+                        {{#unless user}}
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input required class="form-control" type="password" value="" id="student-password"/>
+                            </div>
+                        {{/unless}}
+                        <div class="form-group">
+                            <label>Birthday</label>
+                            <input required class="form-control" type="date" value="" id="student-bday"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Group</label>
+                            <select class="form-control" id="student-group" required>
+                                <option value="">None</option>
+                                {{#each groups}}
+                                    <option value="{{_id._str}}">{{name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
