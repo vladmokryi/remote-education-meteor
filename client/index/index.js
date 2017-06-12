@@ -3,7 +3,8 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
 Template.index.helpers({
-    groups: function () {
-        return Groups.find().fetch().length;
+    currentUserWithRole: function () {
+        let user = Meteor.user();
+        return !!(user && user.roles && user.roles.length);
     }
 });

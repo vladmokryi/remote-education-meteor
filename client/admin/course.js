@@ -1,5 +1,5 @@
 import {Template} from 'meteor/templating';
-import { Groups, Courses, Lectures, Files} from '../../lib/collections';
+import { Groups, Courses, Lectures, Files, Tests} from '../../lib/collections';
 import _ from 'lodash';
 
 Template.editCourse.helpers({
@@ -133,7 +133,15 @@ Template.course.helpers({
         return Files.find({_id: {$in: this.files || []}});
     },
     isTeacher: function () {
-        return Meteor.user().roles.indexOf("Teacher") != -1;
+        let user = Meteor.user();
+        if (user && user.roles && user.roles.length) {
+            return user.roles.indexOf("Teacher") != -1;
+        } else {
+            return false;
+        }
+    },
+    tests: function () {
+        return Tests.find({lectureId: this._id});
     }
 });
 
@@ -200,6 +208,7 @@ Template.editLecture.helpers({
     getFEContext: function () {
         let self = this;
         return {
+            toolbarButtons: ['selectAll', 'clearFormatting', 'undo', 'redo', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertTable', 'insertHR', '|', 'print', 'html'],
             _value: self.description,
             "_onsave.before": function (e, editor) {
                 let newHTML = editor.html.get(true);
@@ -309,6 +318,7 @@ Template.editCourseInfo.helpers({
     getFEContext: function () {
         let self = this;
         return {
+            toolbarButtons: ['selectAll', 'clearFormatting', 'undo', 'redo', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertTable', 'insertHR', '|', 'print', 'html'],
             _value: self.description,
             "_onsave.before": function (e, editor) {
                 let newHTML = editor.html.get(true);

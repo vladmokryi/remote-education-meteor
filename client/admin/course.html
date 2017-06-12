@@ -195,6 +195,19 @@
                     {{#if isTeacher}}
                         <input type="file" class="lecture-file-input" style="margin: 1em;" data-id="{{_id}}"/>
                     {{/if}}
+                    {{#if tests.count}}
+                    <h4 style="margin-left: 1em;">Tests</h4>
+                        <ul>
+                            {{#each tests}}
+                                <li></li>
+                            {{/each}}
+                        </ul>
+                        {{/if}}
+                    {{#if isTeacher}}
+                        <div>
+                            <div class="btn-success btn" id="add-test" style="margin: 1em;">Add Test</div>
+                        </div>
+                    {{/if}}
                 </div>
             {{/each}}
         {{else}}

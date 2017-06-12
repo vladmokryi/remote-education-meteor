@@ -1,6 +1,16 @@
 <template name="index">
     <div class="text-center">
-    <h1>REMOTE EDUCATION</h1>
+        <h1>REMOTE EDUCATION</h1>
+        <img src="http://besteducationusa.com/wp-content/uploads/2016/07/Screenshot_165.png">
+        <div>
+        {{#if currentUserWithRole}}
+
         <a class="btn btn-primary" href="{{pathFor 'dashboard'}}">Go to dashboard...</a>
+            {{else}}
+            {{#if currentUser}}
+                <p class="alert alert-danger">You don't have permissions, please contact to administrators!</p>
+                {{/if}}
+        {{/if}}
+        </div>
     </div>
 </template>

@@ -17,12 +17,27 @@ Template.layout.helpers({
         return Session.get('activeModal');
     },
     isAdmin: function () {
-        return Meteor.user().roles.indexOf("Admin") != -1;
+        let user = Meteor.user();
+        if (user && user.roles && user.roles.length) {
+            return user.roles.indexOf("Admin") != -1;
+        } else {
+            return false;
+        }
     },
     isTeacher: function () {
-        return Meteor.user().roles.indexOf("Teacher") != -1;
+        let user = Meteor.user();
+        if (user && user.roles && user.roles.length) {
+            return user.roles.indexOf("Teacher") != -1;
+        } else {
+            return false;
+        }
     },
     isStudent: function () {
-        return Meteor.user().roles.indexOf("Student") != -1;
+        let user = Meteor.user();
+        if (user && user.roles && user.roles.length) {
+            return user.roles.indexOf("Student") != -1;
+        } else {
+            return false;
+        }
     }
 });

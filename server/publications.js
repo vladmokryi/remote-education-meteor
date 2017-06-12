@@ -1,4 +1,4 @@
-import { Groups, Courses, Lectures, Files } from '../lib/collections';
+import { Groups, Courses, Lectures, Files, Tests } from '../lib/collections';
 import _ from 'lodash';
 
 Meteor.publish('groups', function () {
@@ -41,6 +41,10 @@ Meteor.publish('files', function () {
 
 Meteor.publish('student.group', function (studentId, groupId) {
     return Groups.findOne({_id: groupId});
+});
+
+Meteor.publish('testsByCourseId', function (id) {
+   return Tests.find({courseId: id});
 });
 
 Meteor.publish(null, function() {
