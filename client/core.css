@@ -5,3 +5,7 @@
 .fr-view {
     min-height: 200px;
 }
+
+.fr-wrapper + div {
+    display: none;
+}

@@ -145,9 +145,14 @@
                 {{#if courseFiles.count}}
                     <ul>
                         {{#each courseFiles}}
-                            <li><a href="{{this.url}}" target="_blank">{{this.name}}</a><span
-                                    class="glyphicon glyphicon-remove delete-file-course cursor-pointer"
-                                    style="margin-left: 2em" data-id="{{_id}}"></span></li>
+                            <li><a href="{{this.url}}" target="_blank"><span
+                                    class="glyphicon glyphicon-file"></span>{{this.name}}</a>
+                                {{#if isTeacher}}
+                                    <span
+                                            class="glyphicon glyphicon-remove delete-file-course cursor-pointer"
+                                            style="margin-left: 2em" data-id="{{_id}}"></span>
+                                {{/if}}
+                            </li>
                         {{/each}}
                     </ul>
                 {{else}}
@@ -172,9 +177,15 @@
                     {{#if lectureFiles.count}}
                         <ul>
                             {{#each lectureFiles}}
-                                <li><a href="{{this.url}}" target="_blank">{{this.name}}</a><span
-                                        class="glyphicon glyphicon-remove delete-file-lecture cursor-pointer"
-                                        style="margin-left: 2em" data-id="{{_id}}" data-lecture="{{../_id}}"></span>
+                                <li><a href="{{this.url}}" target="_blank">
+                                    <span class="glyphicon glyphicon-file"></span>
+                                    {{this.name}}</a>
+                                    {{#if isTeacher}}
+                                        <span
+                                                class="glyphicon glyphicon-remove delete-file-lecture cursor-pointer"
+                                                style="margin-left: 2em" data-id="{{_id}}"
+                                                data-lecture="{{../_id}}"></span>
+                                    {{/if}}
                                 </li>
                             {{/each}}
                         </ul>
