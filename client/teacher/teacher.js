@@ -65,7 +65,7 @@ Template.teacherEdit.events({
             } else {
                 data.password = form.find('#student-password').val().trim();
                 data.roles = ['Teacher'];
-                Meteor.call('createUser', data, function (err, res) {
+                Meteor.call('createUserAccount', data, function (err, res) {
                     if(!err) {
                         data.id = res.id;
                         Meteor.call('setUserRole', data, function () {
@@ -80,7 +80,7 @@ Template.teacherEdit.events({
         } else {
             data.password = form.find('#student-password').val().trim();
             data.roles = ['Teacher'];
-            Meteor.call('createUser', data, function (err, res) {
+            Meteor.call('createUserAccount', data, function (err, res) {
                 if(!err) {
                     data.id = res.id;
                     Meteor.call('setUserRole', data, function () {

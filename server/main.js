@@ -16,6 +16,9 @@ Meteor.methods({
             'emails[0].address': data.email
         }});
     },
+    createUserAccount: function (data) {
+        return Accounts.createUser(data);
+    },
     removeUser: function (id) {
         return Meteor.users.remove({_id: id});
     },
