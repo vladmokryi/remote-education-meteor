@@ -9,3 +9,7 @@
 .fr-wrapper + div {
     display: none;
 }
+
+BODY {
+    /*background-color: #eee;*/
+}
