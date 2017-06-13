@@ -1,34 +1,58 @@
 <template name="admin">
-    <h1>Admin</h1>
-    <ul>
-        <li><a href="{{pathFor "admin.students"}}">Students</a></li>
-        <li><a href="{{pathFor "admin.teachers"}}">Teachers</a></li>
-        <li><a href="{{pathFor "admin.groups"}}">Groups</a></li>
-        <li><a href="{{pathFor "admin.courses"}}">Courses</a></li>
-    </ul>
+    <h1>Адмін частина</h1>
+    <div class="btn-group">
+        <a class="btn btn-primary" href="{{pathFor "admin.students"}}">Студенти</a>
+        <a class="btn btn-primary" href="{{pathFor "admin.teachers"}}">Вчителі</a>
+        <a class="btn btn-primary" href="{{pathFor "admin.groups"}}">Групи</a>
+        <a class="btn btn-primary" href="{{pathFor "admin.courses"}}">Курси</a>
+    </div>
 </template>
 
 <template name="adminGroups">
-    <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Groups</h3>
-    <div class="btn btn-success" id="add-item">Add</div>
-    {{> reactiveTable settings=settings}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="btn btn-success pull-right" id="add-item">Додати</div>
+            <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Групи</h3>
+        </div>
+        <div class="panel-body">
+            {{> reactiveTable settings=settings}}
+        </div>
+    </div>
 </template>
 
 <template name="adminStudents">
-    <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Students</h3>
-    <div class="btn btn-success" id="add-item">Add</div>
-    {{> reactiveTable settings=settings}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="btn btn-success pull-right" id="add-item">Додати</div>
+            <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Студенти</h3>
+        </div>
+        <div class="panel-body">
+            {{> reactiveTable settings=settings}}
+        </div>
+    </div>
 </template>
 
 <template name="adminTeachers">
-    <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Teachers</h3>
-    <div class="btn btn-success" id="add-item">Add</div>
-    {{> reactiveTable settings=settings}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="btn btn-success pull-right" id="add-item">Додати</div>
+            <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Вчителі</h3>
+        </div>
+        <div class="panel-body">
+            {{> reactiveTable settings=settings}}
+        </div>
+    </div>
 </template>
 
 <template name="adminCourses">
-    <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Courses</h3>
-    <div class="btn btn-success" id="add-item">Add</div>
-    {{> reactiveTable settings=settings}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="btn btn-success pull-right" id="add-item">Додати</div>
+            <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Курси</h3>
+        </div>
+        <div class="panel-body">
+            {{> reactiveTable settings=settings}}
+        </div>
+    </div>
 </template>
 

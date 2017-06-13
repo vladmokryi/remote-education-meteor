@@ -7,15 +7,15 @@
                     {{#with lecture}}
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Lecture</h4>
+                            <h4 class="modal-title">Заняття</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Name</label>
+                                <label>Назва</label>
                                 <input required class="form-control" type="text" value="{{name}}" id="name"/>
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
+                                <label>Опис</label>
                                 {{> froalaReactive getFEContext}}
                             </div>
                         </div>
@@ -38,32 +38,32 @@
                 <form class="form">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Course</h4>
+                        <h4 class="modal-title">Курс</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Name</label>
+                            <label>Назва</label>
                             <input required class="form-control" type="text" value="" id="name"/>
                         </div>
                         <div class="form-group">
-                            <label>Start</label>
+                            <label>Початок</label>
                             <input required class="form-control" type="date" value="" id="start"/>
                         </div>
                         <div class="form-group">
-                            <label>End</label>
+                            <label>Кінець</label>
                             <input required class="form-control" type="date" value="" id="end"/>
                         </div>
                         <div class="form-group">
-                            <label>Group</label>
+                            <label>Група</label>
                             <select class="form-control" id="group">
                                 <option value="">None</option>
                                 {{#each groups}}
-                                    <option value="{{_id._str}}">{{name}}</option>
+                                    <option value="{{_id}}">{{name}}</option>
                                 {{/each}}
                             </select>
                         </div>
                         <div class="form-group" id="teachers">
-                            <label>Teachers</label>
+                            <label>Вчителі</label>
                             {{#each teachers}}
                                 <div class="input-group">
                                     <select class="form-control">
@@ -73,16 +73,16 @@
                                         {{/each}}
                                     </select>
                                     <span class="input-group-btn">
-                                    <button class="btn btn-danger delete-teacher" data-id="{{this}}" type="button">Delete</button>
+                                    <button class="btn btn-danger delete-teacher" data-id="{{this}}" type="button">Видалити</button>
                                 </span>
                                 </div>
                             {{/each}}
-                            <div class="btn btn-success btn-block" id="add-teacher">Add</div>
+                            <div class="btn btn-success btn-block" id="add-teacher">Додати</div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Зберегти</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
                     </div>
                 </form>
             </div>
@@ -99,11 +99,11 @@
                     {{#with course}}
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Course</h4>
+                            <h4 class="modal-title">Курс</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Info</label>
+                                <label>Опис</label>
                                 {{> froalaReactive getFEContext}}
                             </div>
                         </div>
@@ -123,7 +123,7 @@
         <h3><a href="{{pathFor 'dashboard'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> {{name}}</h3>
         <small class="text-muted">{{period}}</small>
         <div>
-            <h4>Teachers</h4>
+            <h4>Вчителі</h4>
             <ul>
                 {{#each teachersList}}
                     <li>{{profile.name}} : <a>{{emails.[0].address}}</a></li>
@@ -163,7 +163,7 @@
                 {{/if}}
             </div>
         </div>
-        <h4>Lectures</h4>
+        <h4>Заняття</h4>
         {{#if lectures.count}}
             {{#each lectures}}
                 <div class="panel panel-default">
@@ -204,8 +204,8 @@
                         </ul>
                         {{/if}}
                     {{#if isTeacher}}
-                        <div>
-                            <div class="btn-success btn" id="add-test" style="margin: 1em;">Add Test</div>
+                        <div style="display: none;">
+                            <div class="btn-success btn" id="add-test" style="margin: 1em;">Додати Тест</div>
                         </div>
                     {{/if}}
                 </div>
@@ -215,7 +215,7 @@
         {{/if}}
         {{#if isTeacher}}
             <div>
-                <div class="btn-success btn" id="add-lecture" style="margin-bottom: 2em;">Add Lecture</div>
+                <div class="btn-success btn" id="add-lecture" style="margin-bottom: 2em;">Додати Заняття</div>
             </div>
         {{/if}}
     {{/with}}

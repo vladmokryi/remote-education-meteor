@@ -6,11 +6,11 @@
                 <form class="form" >
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Teacher</h4>
+                        <h4 class="modal-title">Вчитель</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Full Name</label>
+                            <label>ФІО</label>
                             <input required class="form-control" type="text" value="" id="student-name"/>
                         </div>
                         <div class="form-group">
@@ -18,23 +18,23 @@
                             <input required class="form-control" type="email" value="" id="student-email"/>
                         </div>
                         <div class="form-group">
-                            <label>Username</label>
+                            <label>Користувач</label>
                             <input required class="form-control" type="text" value="" id="student-username"/>
                         </div>
                         {{#unless user}}
                             <div class="form-group">
-                                <label>Password</label>
+                                <label>Пароль</label>
                                 <input required class="form-control" type="password" value="" id="student-password"/>
                             </div>
                         {{/unless}}
                         <div class="form-group">
-                            <label>Birthday</label>
+                            <label>День народження</label>
                             <input required class="form-control" type="date" value="" id="student-bday"/>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Збереги</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
                     </div>
                 </form>
             </div>
@@ -43,6 +43,12 @@
 </template>
 
 <template name="teacher">
-    <h1>Teacher's Courses</h1>
-    {{> reactiveTable settings=settings}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>Курси поточного вчителя</h1>
+        </div>
+        <div class="panel-body">
+            {{> reactiveTable settings=settings}}
+        </div>
+    </div>
 </template>

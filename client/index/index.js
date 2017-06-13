@@ -9,16 +9,17 @@ Template.index.helpers({
     }
 });
 
-Template.start.events({
+Template.index.events({
     'submit #loginForm': function (e) {
         e.preventDefault();
         let form = $(e.target);
         let email = form.find('#email').val().trim();
         let password = form.find('#password').val().trim();
         Meteor.loginWithPassword(email, password, function (err) {
-            debugger;
             if (!err) {
                 Router.go('dashboard');
+            } else {
+                console.log(err);
             }
         });
     }

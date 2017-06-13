@@ -11,5 +11,13 @@
 }
 
 BODY {
-    /*background-color: #eee;*/
+    background-color: #eee;
+}
+
+.reactive-table-options, .reactive-table-filter {
+    float: left !important;
+}
+
+.reactive-table-navigation {
+    display: none;
 }

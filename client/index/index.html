@@ -1,4 +1,4 @@
-<template name="index">
+<template name="index1">
     <div class="text-center">
         <h1>REMOTE EDUCATION</h1>
         <div>
@@ -13,24 +13,24 @@
         <img src="http://besteducationusa.com/wp-content/uploads/2016/07/Screenshot_165.png">
     </div>
 </template>
-<template name="start">
+<template name="index">
     <div class="row text-center">
         <div class="col-xs-10">
         <h1>Distance Learning</h1>
         <img src="http://inarmy.info/pictures/distancionnoe-obuchenie-600x400.jpg">
         </div>
         {{#unless currentUser}}
-        <div class="col-xs-2 alert alert-info">
+        <div class="col-xs-2 alert alert-info" style="color: black; background: #f8f8f8; border-color: #e5d8d8;">
             <form class="form" id="loginForm">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label for="exampleInputEmail1">Email</label>
                     <input type="email" class="form-control" id="email" placeholder="Email">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label for="exampleInputPassword1">Пароль</label>
                     <input type="password" class="form-control" id="password" placeholder="Password">
                 </div>
-                <button type="submit" class="btn btn-primary">Sign In</button>
+                <button type="submit" class="btn btn-primary">Вхід</button>
             </form>
         </div>
         {{/unless}}

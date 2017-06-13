@@ -25,8 +25,8 @@ Template.adminCourses.helpers({
             rowsPerPage: 10,
             showFilter: true,
             fields: [
-                {key: 'name', label: 'Course Name'},
-                {key: 'group', label: 'Group', fn: function (value, object, key) {
+                {key: 'name', label: 'Назва курса'},
+                {key: 'group', label: 'Група', fn: function (value, object, key) {
                     console.log(arguments);
                     if (value) {
                         let group = Groups.findOne({_id: value});
@@ -39,17 +39,17 @@ Template.adminCourses.helpers({
                     }
                     }
                 },
-                {key: 'start', label: 'Start', fn: function (value, object, key) {
+                {key: 'start', label: 'Початок', fn: function (value, object, key) {
                     let date = moment(value);
                     return new Spacebars.SafeString("<span>"+ (date.isValid() ? date.format("DD-MM-YYYY") : "None")+"</span>");
                 }
                 },
-                {key: 'end', label: 'End', fn: function (value, object, key) {
+                {key: 'end', label: 'Кінець', fn: function (value, object, key) {
                     let date = moment(value);
                     return new Spacebars.SafeString("<span>"+ (date.isValid() ? date.format("DD-MM-YYYY") : "None")+"</span>");
                 }
                 },
-                {key: 'teachers', label: 'Teachers', fn: function (value, object, key) {
+                {key: 'teachers', label: 'Вчителі', fn: function (value, object, key) {
                         if (value) {
                             let teachers = Meteor.users.find({_id: {$in: value}}).fetch();
                             if (teachers.length) {
@@ -82,8 +82,8 @@ Template.adminTeachers.helpers({
             showFilter: true,
             filters: ['userRole'],
             fields: [
-                {key: 'profile.name', label: 'Full Name'},
-                {key: 'username', label: 'Username'},
+                {key: 'profile.name', label: 'ФІО'},
+                {key: 'username', label: 'Користувач'},
                 {key: 'emails.0.address', label: 'Email'},
                 {key: 'edit', headerClass: 'text-right', label: '', fn: function (value, object, key) {
                     //add route param
@@ -100,7 +100,7 @@ Template.adminGroups.helpers({
             rowsPerPage: 10,
             showFilter: true,
             fields: [
-                {key: 'name', label: 'Group Name'},
+                {key: 'name', label: 'Назва групи'},
                 {
                     key: 'edit', headerClass: 'text-right', label: '', fn: function (value, object, key) {
                         //add route param
@@ -118,8 +118,8 @@ Template.adminStudents.helpers({
             showFilter: true,
             filters: ['userRole'],
             fields: [
-                {key: 'profile.name', label: 'Full Name'},
-                {key: 'profile.groupId', label: 'Group',
+                {key: 'profile.name', label: 'ФІО'},
+                {key: 'profile.groupId', label: 'Група',
                     fn: function (value, object, key) {
                         //return new Spacebars.SafeString("<a href="+Routes.route['view'].path({_id:value})+">View</a>");
                         if (value) {
@@ -130,7 +130,7 @@ Template.adminStudents.helpers({
                         }
                     }
                 },
-                {key: 'username', label: 'Username'},
+                {key: 'username', label: 'Користувач'},
                 {key: 'emails.0.address', label: 'Email'},
                 {key: 'edit', headerClass: 'text-right', label: '', fn: function (value, object, key) {
                     //add route param
