@@ -106,7 +106,7 @@ Template.teacher.helpers({
                 {key: 'group', label: 'Group', fn: function (value, object, key) {
                     console.log(arguments);
                     if (value) {
-                        let group = Groups.findOne({_id: new Mongo.ObjectID(value)});
+                        let group = Groups.findOne({_id: value});
 
                         if (group) {
                             return new Spacebars.SafeString("<span>" + group.name + "</span>");

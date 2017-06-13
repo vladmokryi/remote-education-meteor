@@ -31,7 +31,6 @@ Template.studentEdit.onRendered(function () {
            //format
            form.find('#student-bday').val(user.profile.birthday ? moment(user.profile.birthday).format("YYYY-MM-DD") : null);
            form.find('#student-group').val(user.profile.groupId);
-           console.log(Groups.findOne({_id: new Mongo.ObjectID(user.profile.groupId)}));
        }
     }
     modal.modal('show');

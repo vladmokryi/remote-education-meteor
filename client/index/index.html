@@ -2,15 +2,26 @@
     <div class="text-center">
         <h1>REMOTE EDUCATION</h1>
         <img src="http://besteducationusa.com/wp-content/uploads/2016/07/Screenshot_165.png">
+        <img style="display: none;" src="http://inarmy.info/pictures/distancionnoe-obuchenie-600x400.jpg">
         <div>
         {{#if currentUserWithRole}}
-
         <a class="btn btn-primary" href="{{pathFor 'dashboard'}}">Go to dashboard...</a>
             {{else}}
             {{#if currentUser}}
                 <p class="alert alert-danger">You don't have permissions, please contact to administrators!</p>
                 {{/if}}
         {{/if}}
+        </div>
+    </div>
+</template>
+<template name="index1">
+    <div class="text-center">
+        <h1>Distance Learning</h1>
+        <img src="http://inarmy.info/pictures/distancionnoe-obuchenie-600x400.jpg">
+        <div>
+            <form class="form">
+
+            </form>
         </div>
     </div>
 </template>

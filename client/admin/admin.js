@@ -29,7 +29,7 @@ Template.adminCourses.helpers({
                 {key: 'group', label: 'Group', fn: function (value, object, key) {
                     console.log(arguments);
                     if (value) {
-                        let group = Groups.findOne({_id: new Mongo.ObjectID(value)});
+                        let group = Groups.findOne({_id: value});
 
                         if (group) {
                             return new Spacebars.SafeString("<span>" + group.name + "</span>");
@@ -123,7 +123,7 @@ Template.adminStudents.helpers({
                     fn: function (value, object, key) {
                         //return new Spacebars.SafeString("<a href="+Routes.route['view'].path({_id:value})+">View</a>");
                         if (value) {
-                            let group = Groups.findOne({_id: new Mongo.ObjectID(value)});
+                            let group = Groups.findOne({_id: value});
                             return group ? group.name : 'none';
                         } else {
                             return 'none';
