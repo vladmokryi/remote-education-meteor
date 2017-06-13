@@ -152,7 +152,7 @@ Template.adminStudents.events({
             Session.set('activeModalEntityId', this._id);
             console.log(this);
         } else if ($(e.target).hasClass('remove-item')) {
-            if (confirm("Delete student?")) {
+            if (confirm("Видалити студента?")) {
                 Meteor.call('removeUser', this._id);
             }
         }
@@ -169,7 +169,7 @@ Template.adminCourses.events({
             Session.set('activeModalEntityId', this._id);
             console.log(this);
         } else if ($(e.target).hasClass('remove-item')) {
-            if (confirm("Delete course?")) {
+            if (confirm("Видалити курс?")) {
                 Meteor.call('removeCourse', this._id);
             }
         }
@@ -186,7 +186,7 @@ Template.adminGroups.events({
             Session.set('activeModalEntityId', this._id);
             console.log(this);
         } else if ($(e.target).hasClass('remove-item')) {
-            if (confirm("Delete group?")) {
+            if (confirm("Видалити групу?")) {
                 Meteor.call('removeGroup', this._id);
             }
         }
@@ -203,7 +203,7 @@ Template.adminTeachers.events({
             Session.set('activeModalEntityId', this._id);
             console.log(this);
         } else if ($(e.target).hasClass('remove-item')) {
-            if (confirm("Delete teacher?")) {
+            if (confirm("Видалити вчителя?")) {
                 Meteor.call('removeUser', this._id);
             }
         }
