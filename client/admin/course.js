@@ -155,7 +155,7 @@ Template.course.events({
         Session.set('activeModalEntityId', e.target.dataset.id);
     },
     'click .delete-lecture': function (e) {
-        if (confirm("Delete teacher?")) {
+        if (confirm("Delete lecture?")) {
             Meteor.call('removeLecture', this._id);
         }
     },
