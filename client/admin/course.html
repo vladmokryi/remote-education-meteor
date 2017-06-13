@@ -168,9 +168,10 @@
             {{#each lectures}}
                 <div class="panel panel-default">
                     <div class="panel-heading">{{name}}
-                        <div class="pull-right"><span class="cursor-pointer glyphicon glyphicon-pencil edit-lecture"
-                                                      data-id="{{_id}}"></span><span
-                                class="cursor-pointer glyphicon glyphicon-remove delete-lecture"></span></div>
+                        {{#if isTeacher}}
+                            <div class="pull-right"><span class="cursor-pointer glyphicon glyphicon-pencil edit-lecture"
+                                                          data-id="{{_id}}"></span><span
+                                    class="cursor-pointer glyphicon glyphicon-remove delete-lecture"></span></div>{{/if}}
                     </div>
                     <div class="panel-body">{{{description}}}</div>
                     <h4 style="margin-left: 1em;">Files</h4>
