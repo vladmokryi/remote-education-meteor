@@ -71,7 +71,7 @@ Template.studentEdit.events({
                 data.roles = ['Student'];
                 Meteor.call('createUserAccount', data, function (err, res) {
                     if(!err) {
-                        data.id = res.id;
+                        data.id = res;
                         Meteor.call('setUserRole', data, function () {
                             $('#student-edit').modal('hide');
                         });
@@ -86,7 +86,8 @@ Template.studentEdit.events({
             data.roles = ['Student'];
             Meteor.call('createUserAccount', data, function (err, res) {
                 if(!err) {
-                    data.id = res.id;
+                    data.id = res;
+                    debugger;
                     Meteor.call('setUserRole', data, function () {
                         $('#student-edit').modal('hide');
                     });

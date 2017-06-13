@@ -14,9 +14,11 @@
             </div>
             <ul class="nav navbar-nav" style="display: none;">
                 {{> loginButtons}}
+            </ul>
+            <ul class="nav navbar-nav">
                 {{#if currentUser}}
-                <div class="btn-primary btn" id="logout">LogOut</div>
-                    {{/if}}
+                    <div class="btn-primary btn" style="    margin-top: 0.5em;" id="logout">LogOut</div>
+                {{/if}}
             </ul>
         </div>
     </div>
