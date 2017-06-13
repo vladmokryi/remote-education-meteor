@@ -112,7 +112,7 @@ Template.course.helpers({
     },
     period: function () {
         if (this.start && this.end) {
-            return 'From ' +  moment(this.start).format("DD-MM-YYYY") + ' to ' + moment(this.end).format("DD-MM-YYYY");
+            return 'з ' +  moment(this.start).format("DD-MM-YYYY") + ' по ' + moment(this.end).format("DD-MM-YYYY");
         } else {
             return '';
         }

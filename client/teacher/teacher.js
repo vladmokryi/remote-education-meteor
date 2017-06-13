@@ -67,7 +67,7 @@ Template.teacherEdit.events({
                 data.roles = ['Teacher'];
                 Meteor.call('createUserAccount', data, function (err, res) {
                     if(!err) {
-                        data.id = res.id;
+                        data.id = res;
                         Meteor.call('setUserRole', data, function () {
                             $('#student-edit').modal('hide');
                         });
@@ -82,7 +82,7 @@ Template.teacherEdit.events({
             data.roles = ['Teacher'];
             Meteor.call('createUserAccount', data, function (err, res) {
                 if(!err) {
-                    data.id = res.id;
+                    data.id = res;
                     Meteor.call('setUserRole', data, function () {
                         $('#student-edit').modal('hide');
                     });
