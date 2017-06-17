@@ -120,36 +120,41 @@
 
 <template name="course">
     {{#with course}}
+        <div class="page-header">
         <h3><a href="{{pathFor 'dashboard'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> {{name}}</h3>
         <small class="text-muted">{{period}}</small>
-        <div>
+        </div>
+        <div class="alert alert-info">
             <h4>Teachers</h4>
-            <ul>
+            <div class="list-group">
                 {{#each teachersList}}
-                    <li>{{profile.name}} : <a>{{emails.[0].address}}</a></li>
+                        <a class="list-group-item">
+                            <h5 class="list-group-item-heading">{{profile.name}}</h5>
+                            <p class="list-group-item-text">{{emails.[0].address}}</p>
+                        </a>
                 {{/each}}
-            </ul>
+            </div>
         </div>
         <div>
-            <h4>Info {{#if isTeacher}}<span class="cursor-pointer glyphicon glyphicon-pencil edit-course-info"
-                                            data-id="{{_id}}"></span>{{/if}}</h4>
-            <div>
+            <h3>Course Info {{#if isTeacher}}<span class="pull-right cursor-pointer glyphicon glyphicon-pencil edit-course-info"
+                                            data-id="{{_id}}"></span>{{/if}}</h3>
+            <p class="alert" style="border-color: black;">
                 {{#if description}}
                     {{{description}}}
                 {{else}}
                     -
                 {{/if}}
-            </div>
-            <div>
+            </p>
+            <div style="margin-left: 2em;">
                 <h4>Files</h4>
                 {{#if courseFiles.count}}
-                    <ul>
+                    <ul class="list-group">
                         {{#each courseFiles}}
-                            <li><a href="{{this.url}}" target="_blank"><span
+                            <li class="list-group-item-info list-group-item"><a href="{{this.url}}" target="_blank"><span
                                     class="glyphicon glyphicon-file"></span>{{this.name}}</a>
                                 {{#if isTeacher}}
                                     <span
-                                            class="glyphicon glyphicon-remove delete-file-course cursor-pointer"
+                                            class="pull-right glyphicon glyphicon-remove delete-file-course cursor-pointer"
                                             style="margin-left: 2em" data-id="{{_id}}"></span>
                                 {{/if}}
                             </li>
@@ -163,7 +168,7 @@
                 {{/if}}
             </div>
         </div>
-        <h4>Lectures</h4>
+        <h3>Lectures</h3>
         {{#if lectures.count}}
             {{#each lectures}}
                 <div class="panel panel-default">
@@ -174,16 +179,17 @@
                                 class="cursor-pointer glyphicon glyphicon-remove delete-lecture"></span></div>{{/if}}
                     </div>
                     <div class="panel-body">{{{description}}}</div>
+                    <div style="margin-left: 2em; margin-right: 2em">
                     <h4 style="margin-left: 1em;">Files</h4>
                     {{#if lectureFiles.count}}
-                        <ul>
+                        <ul class="list-group">
                             {{#each lectureFiles}}
-                                <li><a href="{{this.url}}" target="_blank">
+                                <li class="list-group-item"><a href="{{this.url}}" target="_blank">
                                     <span class="glyphicon glyphicon-file"></span>
                                     {{this.name}}</a>
                                     {{#if isTeacher}}
                                         <span
-                                                class="glyphicon glyphicon-remove delete-file-lecture cursor-pointer"
+                                                class="pull-right glyphicon glyphicon-remove delete-file-lecture cursor-pointer"
                                                 style="margin-left: 2em" data-id="{{_id}}"
                                                 data-lecture="{{../_id}}"></span>
                                     {{/if}}
@@ -196,6 +202,7 @@
                     {{#if isTeacher}}
                         <input type="file" class="lecture-file-input" style="margin: 1em;" data-id="{{_id}}"/>
                     {{/if}}
+                    </div>
                     {{#if tests.count}}
                     <h4 style="margin-left: 1em;">Tests</h4>
                         <ul>
