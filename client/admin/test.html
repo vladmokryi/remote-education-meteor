@@ -1,0 +1,137 @@
+<template name="editTest">
+    <div id="test-edit" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <form class="form">
+                    {{#with test}}
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Test</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input required class="form-control" type="text" value="{{name}}" id="name"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Video</label>
+                                <input required class="form-control" type="url" value="{{video}}" id="video"/>
+                            </div>
+                            <div class="form-group" id="questions">
+                                <label>Questions</label>
+                                <ol>
+                                    {{#each questions}}
+                                        {{#let questionIndex=@index}}
+                                            <li class="question-block">
+                                                <div class="input-group"
+                                                     style="margin-bottom: 1em; margin-top: -1.8em;">
+                                                    <input class="form-control question" data-id="{{@index}}"
+                                                           type="text" value="{{name}}"/>
+                                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger delete-question" data-id="{{@index}}"
+                                                type="button">Delete</button>
+                                    </span>
+                                                </div>
+                                                <ol style="margin-left: 2em">
+                                                    {{#each variants}}
+                                                        <li class="variant-block">
+                                                            <div class="input-group"
+                                                                 style="margin-bottom: 1em; margin-top: -1.8em;">
+                                               <span class="input-group-btn">
+                                                   <div class="set-valid btn {{validVariant @index ../validIndex}}"
+                                                        data-question="{{questionIndex}}" data-id="{{@index}}">
+                                                       <span class="glyphicon glyphicon-chevron-down"></span>
+                                                   </div>
+                                               </span>
+                                                                <input class="form-control variant"
+                                                                       data-question="{{questionIndex}}"
+                                                                       data-id="{{@index}}" type="text"
+                                                                       value="{{this}}"/>
+                                                                <span class="input-group-btn">
+
+                                        <button class="btn btn-danger delete-variant" data-question="{{questionIndex}}"
+                                                data-id="{{@index}}"
+                                                type="button">Delete</button>
+                                    </span>
+                                                            </div>
+                                                        </li>
+                                                    {{/each}}
+                                                    <div style="margin-bottom: 1em;" class="btn btn-success btn-block"
+                                                         data-id="{{@index}}" id="add-variant">Add Variant
+                                                    </div>
+                                                </ol>
+                                            </li>
+                                        {{/let}}
+                                    {{/each}}
+                                </ol>
+                                <div class="btn btn-success btn-block" id="add-question">Add Question</div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    {{/with}}
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="test">
+    {{#with test}}
+        <div class="page-header">
+            <h3>{{name}}</h3>
+        </div>
+        {{#if testResult}}
+            {{#if testResult.step1}}
+                <div class="text-center">
+                    <div>
+                        <iframe width="560" height="315" src="{{video}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="btn btn-success" id="video-done" data-id="{{testResult._id}}">Continue</div>
+                </div>
+            {{else}}
+                {{#if testResult.step2}}
+                    <div>
+                        <div>
+                            <ol>
+                                {{#each questions}}
+                                    {{#let questionIndex=@index}}
+                                        <li>
+                                            {{name}}
+                                            <ol style="margin: 1em;">
+                                                {{#each variants}}
+                                                    <li><span style="margin-right: 1em; {{isAnswer @index questionIndex}}"
+                                                              class="glyphicon glyphicon-chevron-down cursor-pointer set-answer"
+                                                              data-question="{{questionIndex}}"
+                                                              data-id="{{@index}}"></span>{{this}}</li>
+                                                {{/each}}
+                                            </ol>
+                                        </li>
+                                    {{/let}}
+                                {{/each}}
+                            </ol>
+                        </div>
+                        <div class="btn btn-success" id="test-done" data-id="{{testResult._id}}">Send Answers</div>
+                    </div>
+                {{else}}
+                    {{#if testResult.step3}}
+                        <h3 class="text-center">Your result: <span class="badge">{{testResult.result}}</span> / <span class="badge">100</span></h3>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        {{else}}
+            <div class="jumbotron">
+                <h2>Video test</h2>
+                <div class="btn btn-success" id="start-test">Start</div>
+            </div>
+        {{/if}}
+    {{/with}}
+</template>
+
+<template name="testResults">
+    <h3>Test results</h3>
+    {{> reactiveTable settings=settings}}
+</template>

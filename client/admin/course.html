@@ -65,7 +65,7 @@
                         <div class="form-group" id="teachers">
                             <label>Teachers</label>
                             {{#each teachers}}
-                                <div class="input-group">
+                                <div class="input-group" style="margin-bottom: 1em;">
                                     <select class="form-control">
                                         <option value="">None</option>
                                         {{#each teachersList }}
@@ -73,8 +73,8 @@
                                         {{/each}}
                                     </select>
                                     <span class="input-group-btn">
-                                    <button class="btn btn-danger delete-teacher" data-id="{{this}}" type="button">Delete</button>
-                                </span>
+                                        <button class="btn btn-danger delete-teacher" data-id="{{this}}" type="button">Delete</button>
+                                    </span>
                                 </div>
                             {{/each}}
                             <div class="btn btn-success btn-block" id="add-teacher">Add</div>
@@ -205,15 +205,29 @@
                     </div>
                     {{#if tests.count}}
                     <h4 style="margin-left: 1em;">Tests</h4>
-                        <ul>
+                        <ul class="list-group">
                             {{#each tests}}
-                                <li></li>
+                                <li class="list-group-item list-group-item-warning">
+                                    {{#if isTeacher}}
+                                        <a href="{{pathFor 'testResults' this._id}}">{{this.name}}</a>
+                                        <div class="pull-right">
+                                        <span
+                                                class="glyphicon glyphicon-pencil edit-test cursor-pointer"
+                                                data-id="{{this._id}}"></span>
+                                        <span
+                                                class="glyphicon glyphicon-remove delete-test cursor-pointer"
+                                                data-id="{{this._id}}"></span>
+                                        </div>
+                                        {{else}}
+                                        <a href="{{pathFor 'test' this._id}}">{{this.name}}</a>
+                                    {{/if}}
+                                </li>
                             {{/each}}
                         </ul>
                         {{/if}}
                     {{#if isTeacher}}
                         <div>
-                            <div class="btn-success btn" id="add-test" style="margin: 1em;">Add Test</div>
+                            <div class="btn-success btn" id="add-test" style="margin: 1em;" data-id="{{_id}}">Add Test</div>
                         </div>
                     {{/if}}
                 </div>

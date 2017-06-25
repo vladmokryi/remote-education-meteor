@@ -189,10 +189,28 @@ Template.course.events({
         $('.lecture-file-input').val('');
     },
     'click .delete-file-course': function (event) {
-        Meteor.call('removeFileFromCourse', {id: Courses.findOne()._id, fileId: event.target.dataset.id});
+        if (confirm("Delete file?")) {
+            Meteor.call('removeFileFromCourse', {id: Courses.findOne()._id, fileId: event.target.dataset.id});
+        }
     },
     'click .delete-file-lecture': function (event) {
-        Meteor.call('removeFileFromLecture', {id: event.target.dataset.lecture, fileId: event.target.dataset.id});
+        if (confirm("Delete file?")) {
+            Meteor.call('removeFileFromLecture', {id: event.target.dataset.lecture, fileId: event.target.dataset.id});
+        }
+    },
+    'click #add-test': function (e) {
+        Session.set('activeModal', 'editTest');
+        Session.set('activeModalLectureId', e.target.dataset.id);
+    },
+    'click .edit-test': function (e) {
+        Session.set('activeModal', 'editTest');
+        console.log(e.target.dataset.id);
+        Session.set('activeModalEntityId', e.target.dataset.id);
+    },
+    'click .delete-test': function (e) {
+        if (confirm("Delete test?")) {
+            Meteor.call('removeTest', this._id);
+        }
     }
 });
 
