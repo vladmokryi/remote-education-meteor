@@ -65,7 +65,7 @@
                         <div class="form-group" id="teachers">
                             <label>Вчителі</label>
                             {{#each teachers}}
-                                <div class="input-group">
+                                <div class="input-group" style="margin-bottom: 1em;">
                                     <select class="form-control">
                                         <option value="">None</option>
                                         {{#each teachersList }}
@@ -225,14 +225,27 @@
                                         <h4 style="margin-left: 1em;">Tests</h4>
                                         <ul>
                                             {{#each tests}}
-                                                <li></li>
+                                                <li>
+                                                    {{#if isTeacher}}
+                                                        <a href="{{pathFor 'testResults' this._id}}">{{this.name}}</a>
+                                                        <span style="margin-left: 2em;">
+                                        <span
+                                                class="glyphicon glyphicon-pencil edit-test cursor-pointer"
+                                                data-id="{{this._id}}"></span>
+                                                            <span
+                                                                    class="glyphicon glyphicon-remove delete-test cursor-pointer"
+                                                                    data-id="{{this._id}}"></span>
+                                                        </span>
+                                                    {{else}}
+                                                        <a href="{{pathFor 'test' this._id}}">{{this.name}}</a>
+                                                    {{/if}}
+                                                </li>
                                             {{/each}}
                                         </ul>
                                     {{/if}}
                                     {{#if isTeacher}}
-                                        <div style="display: none;">
-                                            <div class="btn-success btn" id="add-test" style="margin: 1em;">Додати
-                                                Тест
+                                        <div>
+                                            <div class="btn-success btn" id="add-test" data-id="{{_id}}" style="margin: 1em;">Додати Тест
                                             </div>
                                         </div>
                                     {{/if}}

@@ -1,5 +1,5 @@
 import { Accounts } from 'meteor/accounts-base';
-import { Groups, Courses, Lectures, Files} from '../lib/collections';
+import { Groups, Courses, Lectures, Files, Tests, TestResults} from '../lib/collections';
 
 Meteor.startup(() => {
     console.log('goooo2');
@@ -87,5 +87,24 @@ Meteor.methods({
     },
     removeLecture: function (id) {
         return Lectures.remove({_id: id});
+    },
+    createTest: function (data) {
+        return Tests.insert(data);
+    },
+    updateTest: function (data) {
+        return Tests.update({_id: data.id}, {$set: {
+            name: data.name,
+            video: data.video,
+            questions: data.questions
+        }});
+    },
+    removeTest: function (id) {
+        return Tests.remove({_id: id});
+    },
+    createTestResult: function (id, userId, answers) {
+        return TestResults.insert({testId: id, userId: userId, answers: answers})
+    },
+    updateTestResult: function (id, set) {
+        return TestResults.update({_id: id}, {$set: set});
     }
 });
