@@ -19,7 +19,7 @@ Meteor.publish('admin.teachers', function () {
 });
 
 Meteor.publish('teacher.courses', function (teacherId) {
-    return Courses.find({teachers: {$elemMatch: { $eq: teacherId.toString()}}, end: {$gte: new Date()}});
+    return Courses.find({teachers: {$elemMatch: { $eq: teacherId}}, end: {$gte: new Date()}});
 });
 
 Meteor.publish('student.courses', function (studentId) {
