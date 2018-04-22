@@ -1,6 +1,6 @@
 <head>
-    <link rel="shortcut icon" href="/favicon.ico"/>
-    <title>DL</title>
+    <link rel="shortcut icon" href="https://www.shareicon.net/data/2016/03/03/319314_read.ico"/>
+    <title>СДН</title>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <script type="text/javascript" src="//apis.google.com/js/plusone.js"></script>
@@ -9,17 +9,26 @@
 <template name="layout">
     <div class="navbar navbar-default" role="navigation">
         <div class="container text-center">
-            <div class="navbar-header pull-right">
-                <a class="navbar-brand" href="{{pathFor "dashboard"}}">Distance Learning</a>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{pathFor "dashboard"}}">
+                    <img src="https://www.shareicon.net/data/2016/03/03/319314_read.ico" width="20" style="display: inline-block;" />
+                    СДН
+                </a>
             </div>
-            <ul class="nav navbar-nav" style="display: none;">
-                {{> loginButtons}}
-            </ul>
-            <ul class="nav navbar-nav">
-                {{#if currentUser}}
-                    <div class="btn-primary btn" style="    margin-top: 0.5em;" id="logout">Вийти</div>
+            {{#if currentUser}}
+                {{#if isAdmin}}
+                    <ul class="nav navbar-nav">
+                        <li class="{{#if isActive 'admin.students'}}active{{/if}}"><a href="{{pathFor "admin.students"}}">Студенти</a></li>
+                        <li class="{{#if isActive "admin.teachers"}}active{{/if}}"><a href="{{pathFor "admin.teachers"}}">Викладачі</a></li>
+                        <li class="{{#if isActive "admin.groups"}}active{{/if}}"><a href="{{pathFor "admin.groups"}}">Групи</a></li>
+                        <li class="{{#if isActive "admin.courses"}}active{{/if}}"><a href="{{pathFor "admin.courses"}}">Курси</a></li>
+                    </ul>
                 {{/if}}
-            </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>{{currentUser.profile.name}}</a></li>
+                    <li><a class="cursor-pointer" id="logout">Вийти</a></li>
+                </ul>
+            {{/if}}
         </div>
     </div>
     <div class="navbar navbar-inverse" role="navigation" style="display: none;">
@@ -30,9 +39,12 @@
             <div class="navbar-collapse collapse">
                 {{#if currentUser}}
                     <ul class="nav navbar-nav">
-                        {{#if isStudent}}<li ><a href="{{pathFor "student"}}">Student</a></li>{{/if}}
-                        {{#if isAdmin}}<li ><a href="{{pathFor "admin"}}">Admin</a></li>{{/if}}
-                        {{#if isTeacher}}<li ><a href="{{pathFor "teacher"}}">Teacher</a></li>{{/if}}
+                        {{#if isStudent}}
+                            <li><a href="{{pathFor "student"}}">Student</a></li>{{/if}}
+                        {{#if isAdmin}}
+                            <li><a href="{{pathFor "admin"}}">Admin</a></li>{{/if}}
+                        {{#if isTeacher}}
+                            <li><a href="{{pathFor "teacher"}}">Teacher</a></li>{{/if}}
                     </ul>
                 {{/if}}
                 <ul class="nav navbar-nav navbar-right">

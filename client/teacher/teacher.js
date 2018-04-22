@@ -42,13 +42,13 @@ Template.teacherEdit.events({
         let form = $(e.target);
         let data = {
             email: form.find('#student-email').val().trim(),
-            username: form.find('#student-username').val().trim(),
             profile: {
                 name: form.find('#student-name').val().trim(),
                 birthday: new Date(form.find('#student-bday').val().trim()),
                 groupId: form.find('#student-group').val(),
             }
         };
+        data.username = data.email.split('@')[0];
         let id = Session.get('activeModalEntityId');
         if (id) {
             let user = Meteor.users.findOne({_id: id});
@@ -102,8 +102,12 @@ Template.teacher.helpers({
             rowsPerPage: 10,
             showFilter: true,
             fields: [
-                {key: 'name', label: 'Course Name'},
-                {key: 'group', label: 'Group', fn: function (value, object, key) {
+                {key: 'name', label: 'Назва курсу',
+                    fn: function (value, object, key) {
+                    return new Spacebars.SafeString("<a class='cursor-pointer course-name'>" + value + "</a>");
+                    }
+                    },
+                {key: 'group', label: 'Група', fn: function (value, object, key) {
                     console.log(arguments);
                     if (value) {
                         let group = Groups.findOne({_id: value});
@@ -116,17 +120,17 @@ Template.teacher.helpers({
                     }
                 }
                 },
-                {key: 'start', label: 'Start', fn: function (value, object, key) {
+                {key: 'start', label: 'Початок', fn: function (value, object, key) {
                     let date = moment(value);
                     return new Spacebars.SafeString("<span>"+ (date.isValid() ? date.format("DD-MM-YYYY") : "None")+"</span>");
                 }
                 },
-                {key: 'end', label: 'End', fn: function (value, object, key) {
+                {key: 'end', label: 'Кінець', fn: function (value, object, key) {
                     let date = moment(value);
                     return new Spacebars.SafeString("<span>"+ (date.isValid() ? date.format("DD-MM-YYYY") : "None")+"</span>");
                 }
                 },
-                {key: 'teachers', label: 'Teachers', fn: function (value, object, key) {
+                {key: 'teachers', label: 'Викладачі', fn: function (value, object, key) {
                     if (value) {
                         if (value.length) {
                             return new Spacebars.SafeString("<span>" + value.length + "</span>");

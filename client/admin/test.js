@@ -282,7 +282,8 @@ Template.checkTest.events({
    'click .set-valid': function (e) {
         let id = e.target.dataset.id;
        let answers = Session.get('answers');
-       answers[id] = true;
+       answers[id] = !answers[id];
+
        Session.set('answers', answers);
     },
     'click #checkComplete': function () {
@@ -290,7 +291,7 @@ Template.checkTest.events({
         let answers = Session.get('answers');
         let result = 0;
         answers.forEach(function (item, index) {
-            if (item != null) {
+            if (item) {
                 result++;
             }
         });

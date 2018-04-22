@@ -17,9 +17,10 @@ Template.index.events({
         let password = form.find('#password').val().trim();
         Meteor.loginWithPassword(email, password, function (err) {
             if (!err) {
-                Router.go('dashboard');
+                Router.go('admin.students');
             } else {
                 console.log(err);
+                alert(err.reason || err.message);
             }
         });
     }

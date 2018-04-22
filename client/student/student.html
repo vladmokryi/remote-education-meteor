@@ -1,7 +1,7 @@
 <template name="student">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h1>Курси поточного студента</h1>
+            <h1>Мої курси</h1>
         </div>
         <div class="panel-body">
             {{> reactiveTable settings=settings}}
@@ -21,16 +21,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ФІО</label>
+                            <label>Прізвище Ім'я По-батькові</label>
                             <input required class="form-control" type="text" value="" id="student-name"/>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
                             <input required class="form-control" type="email" value="" id="student-email"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Користувач</label>
-                            <input required class="form-control" type="text" value="" id="student-username"/>
                         </div>
                         {{#unless user}}
                             <div class="form-group">

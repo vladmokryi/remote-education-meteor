@@ -21,7 +21,7 @@
                                         {{#let questionIndex=@index}}
                                             <li class="question-block">
                                                 <div class="input-group"
-                                                     style="margin-bottom: 1em; margin-top: -1.8em;">
+                                                     style="margin-bottom: 1em;">
                                                     <input class="form-control question" data-id="{{@index}}"
                                                            type="text" value="{{name}}"/>
                                                     <span class="input-group-btn">
@@ -74,7 +74,7 @@
                                 {{/each}}
                             </ol>
                         </div>
-                        <button type="submit" class="btn btn-success" id="test-done" data-id="{{testResult._id}}">Відіслати відповіді
+                        <button type="submit" class="btn btn-success" id="test-done" data-id="{{testResult._id}}">Надіслати відповіді
                         </button>
                     </form>
                 {{/if}}
@@ -120,7 +120,7 @@
                                 {{/each}}
                             </ol>
                         </div>
-                        <div class="btn btn-success" id="checkComplete" data-id="{{testResult._id}}">Відіслати відповіді
+                        <div class="btn btn-success" id="checkComplete" data-id="{{testResult._id}}">Опублікувати результат
                         </div>
                     </div>
                 {{/if}}

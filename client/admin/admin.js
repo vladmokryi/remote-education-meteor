@@ -25,7 +25,7 @@ Template.adminCourses.helpers({
             rowsPerPage: 10,
             showFilter: true,
             fields: [
-                {key: 'name', label: 'Назва курса'},
+                {key: 'name', label: 'Назва курсу'},
                 {key: 'group', label: 'Група', fn: function (value, object, key) {
                     console.log(arguments);
                     if (value) {
@@ -49,7 +49,7 @@ Template.adminCourses.helpers({
                     return new Spacebars.SafeString("<span>"+ (date.isValid() ? date.format("DD-MM-YYYY") : "None")+"</span>");
                 }
                 },
-                {key: 'teachers', label: 'Вчителі', fn: function (value, object, key) {
+                {key: 'teachers', label: 'Викладачі', fn: function (value, object, key) {
                         if (value) {
                             let teachers = Meteor.users.find({_id: {$in: value}}).fetch();
                             if (teachers.length) {
@@ -82,8 +82,7 @@ Template.adminTeachers.helpers({
             showFilter: true,
             filters: ['userRole'],
             fields: [
-                {key: 'profile.name', label: 'ФІО'},
-                {key: 'username', label: 'Користувач'},
+                {key: 'profile.name', label: 'Прізвище Ім\'я По-батькові'},
                 {key: 'emails.0.address', label: 'Email'},
                 {key: 'edit', headerClass: 'text-right', label: '', fn: function (value, object, key) {
                     //add route param
@@ -118,7 +117,7 @@ Template.adminStudents.helpers({
             showFilter: true,
             filters: ['userRole'],
             fields: [
-                {key: 'profile.name', label: 'ФІО'},
+                {key: 'profile.name', label: 'Прізвище Ім\'я По-батькові'},
                 {key: 'profile.groupId', label: 'Група',
                     fn: function (value, object, key) {
                         //return new Spacebars.SafeString("<a href="+Routes.route['view'].path({_id:value})+">View</a>");
@@ -130,7 +129,6 @@ Template.adminStudents.helpers({
                         }
                     }
                 },
-                {key: 'username', label: 'Користувач'},
                 {key: 'emails.0.address', label: 'Email'},
                 {key: 'edit', headerClass: 'text-right', label: '', fn: function (value, object, key) {
                     //add route param
@@ -203,7 +201,7 @@ Template.adminTeachers.events({
             Session.set('activeModalEntityId', this._id);
             console.log(this);
         } else if ($(e.target).hasClass('remove-item')) {
-            if (confirm("Видалити вчителя?")) {
+            if (confirm("Видалити Викладача?")) {
                 Meteor.call('removeUser', this._id);
             }
         }

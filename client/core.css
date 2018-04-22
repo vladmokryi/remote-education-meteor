@@ -12,10 +12,14 @@
 
 BODY {
     background-color: #eee;
+    background-image: url(https://media.istockphoto.com/vectors/seamless-vector-school-and-education-background-vector-id610870476);
+    background-repeat: repeat;
+    background-size: 163px;
 }
 
 .reactive-table-options, .reactive-table-filter {
-    float: left !important;
+    width: 100%;
+    padding: 0;
 }
 
 .reactive-table-navigation {

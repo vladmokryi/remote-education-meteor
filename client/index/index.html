@@ -15,24 +15,28 @@
 </template>
 <template name="index">
     <div class="row text-center">
-        <div class="col-xs-10">
-        <h1>Distance Learning</h1>
-        <img src="http://inarmy.info/pictures/distancionnoe-obuchenie-600x400.jpg">
-        </div>
-        {{#unless currentUser}}
-        <div class="col-xs-2 alert alert-info" style="color: black; background: #f8f8f8; border-color: #e5d8d8;">
-            <form class="form" id="loginForm">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email">
+        <div class="col-xs-12">
+            {{#unless currentUser}}
+                <div class="panel panel-primary" style="color: black; background: #f8f8f8; border-color: #e5d8d8; margin: 0 auto; width: 50%;">
+                    <div class="panel-heading text-center">
+                        <h4>Система Дистанційного Навчання</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form" id="loginForm">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Пошта</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Пароль</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Вхід</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Пароль</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Вхід</button>
-            </form>
+            {{/unless}}
+            <img src="http://www.freepngimg.com/download/education/2-2-education-picture.png" />
         </div>
-        {{/unless}}
     </div>
 </template>

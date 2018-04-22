@@ -142,6 +142,16 @@ Template.course.helpers({
     },
     tests: function () {
         return Tests.find({lectureId: this._id});
+    },
+    math: function(lvalue, operator, rvalue) {lvalue = parseFloat(lvalue);
+        rvalue = parseFloat(rvalue);
+        return {
+            "+": lvalue + rvalue,
+            "-": lvalue - rvalue,
+            "*": lvalue * rvalue,
+            "/": lvalue / rvalue,
+            "%": lvalue % rvalue
+        }[operator];
     }
 });
 

@@ -46,13 +46,13 @@ Template.studentEdit.events({
         let form = $(e.target);
         let data = {
             email: form.find('#student-email').val().trim(),
-            username: form.find('#student-username').val().trim(),
             profile: {
                 name: form.find('#student-name').val().trim(),
                 birthday: new Date(form.find('#student-bday').val().trim()),
                 groupId: form.find('#student-group').val(),
             }
         };
+        data.username = data.email.split('@')[0];
         let id = Session.get('activeModalEntityId');
         if (id) {
             let user = Meteor.users.findOne({_id: id});
@@ -105,7 +105,10 @@ Template.student.helpers({
             rowsPerPage: 10,
             showFilter: true,
             fields: [
-                {key: 'name', label: 'Course Name'},
+                {key: 'name', label: 'Course Name', fn: function (value, object, key) {
+                        return new Spacebars.SafeString("<a class='cursor-pointer course-name'>" + value + "</a>");
+                    }
+                    },
                 {key: 'start', label: 'Start', fn: function (value, object, key) {
                     let date = moment(value);
                     return new Spacebars.SafeString("<span>"+ (date.isValid() ? date.format("DD-MM-YYYY") : "None")+"</span>");

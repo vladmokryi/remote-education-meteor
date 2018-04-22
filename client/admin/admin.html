@@ -1,18 +1,8 @@
-<template name="admin">
-    <h1>Адмін частина</h1>
-    <div class="btn-group">
-        <a class="btn btn-primary" href="{{pathFor "admin.students"}}">Студенти</a>
-        <a class="btn btn-primary" href="{{pathFor "admin.teachers"}}">Вчителі</a>
-        <a class="btn btn-primary" href="{{pathFor "admin.groups"}}">Групи</a>
-        <a class="btn btn-primary" href="{{pathFor "admin.courses"}}">Курси</a>
-    </div>
-</template>
-
 <template name="adminGroups">
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="btn btn-success pull-right" id="add-item">Додати</div>
-            <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Групи</h3>
+            <h3> Групи</h3>
         </div>
         <div class="panel-body">
             {{> reactiveTable settings=settings}}
@@ -24,7 +14,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="btn btn-success pull-right" id="add-item">Додати</div>
-            <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Студенти</h3>
+            <h3> Студенти</h3>
         </div>
         <div class="panel-body">
             {{> reactiveTable settings=settings}}
@@ -36,7 +26,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="btn btn-success pull-right" id="add-item">Додати</div>
-            <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Вчителі</h3>
+            <h3> Викладачі</h3>
         </div>
         <div class="panel-body">
             {{> reactiveTable settings=settings}}
@@ -48,7 +38,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="btn btn-success pull-right" id="add-item">Додати</div>
-            <h3><a href="{{pathFor 'admin'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> Курси</h3>
+            <h3> Курси</h3>
         </div>
         <div class="panel-body">
             {{> reactiveTable settings=settings}}

@@ -39,6 +39,9 @@ Template.layout.helpers({
         } else {
             return false;
         }
+    },
+    isActive: function (value) {
+        return Router.current().route.getName() === value;
     }
 });
 

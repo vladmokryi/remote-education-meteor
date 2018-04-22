@@ -63,7 +63,7 @@
                             </select>
                         </div>
                         <div class="form-group" id="teachers">
-                            <label>Вчителі</label>
+                            <label>Викладачі</label>
                             {{#each teachers}}
                                 <div class="input-group" style="margin-bottom: 1em;">
                                     <select class="form-control">
@@ -123,31 +123,26 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="pull-right">
-                    <small class="text-muted">{{period}}</small>
+                    <small class="text-muted">Тривалість курсу:</small> {{period}}
                 </div>
-                <h3><a href="{{pathFor 'dashboard'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> {{name}}
+                <h3 style="margin: 0"><a href="{{pathFor 'dashboard'}}"><span class="glyphicon glyphicon-arrow-left"></span></a> {{name}}
                 </h3>
             </div>
             <div class="panel-body">
                 <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4>Вчителі</h4>
-                    </div>
                     <div class="panel-body">
-                        <ul>
+                        <h4 style="margin: 0;display: inline-block;">Викладачі</h4>:
                             {{#each teachersList}}
-                                <li>{{profile.name}} : <a>{{emails.[0].address}}</a></li>
+                                <b>{{profile.name}} (<a>{{emails.[0].address}}</a>)</b>,
                             {{/each}}
-                        </ul>
                     </div>
                 </div>
                 <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4>Info {{#if isTeacher}}
-                            <span class="cursor-pointer glyphicon glyphicon-pencil edit-course-info"
-                                  data-id="{{_id}}"></span>{{/if}}</h4>
-                    </div>
                     <div class="panel-body">
+                        <h4 style="margin: 0 0 10px 0;display: inline-block;">Короткий опис курсу</h4> {{#if isTeacher}}
+                        <span class="cursor-pointer glyphicon glyphicon-pencil edit-course-info"
+                              data-id="{{_id}}"></span>{{/if}}
+
                         {{#if description}}
                             {{{description}}}
                         {{else}}
@@ -156,10 +151,8 @@
                     </div>
                 </div>
                 <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4>Файли</h4>
-                    </div>
                     <div class="panel-body">
+                        <h4 style="margin: 0 0 10px 0;display: inline-block;">Матеріали курсу:</h4>
                         {{#if courseFiles.count}}
                             <ul>
                                 {{#each courseFiles}}
@@ -174,7 +167,7 @@
                                 {{/each}}
                             </ul>
                         {{else}}
-                            -
+                            <div>-</div>
                         {{/if}}
                         {{#if isTeacher}}
                             <input type="file" class="course-file-input"/>
@@ -182,14 +175,15 @@
                     </div>
                 </div>
                 <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4>Заняття</h4>
-                    </div>
                     <div class="panel-body">
+                        <h4 style="margin: 0 0 10px 0;display: inline-block;">Лекції:</h4>
                         {{#if lectures.count}}
                             {{#each lectures}}
                                 <div class="panel panel-primary">
-                                    <div class="panel-heading">{{name}}
+                                    <div class="panel-heading">
+                                        <h4 style="display:inline-block;margin: 0">Лекція {{math @index "+" 1}}:
+                                        {{name}}
+                                        </h4>
                                         {{#if isTeacher}}
                                             <div class="pull-right"><span
                                                     class="cursor-pointer glyphicon glyphicon-pencil edit-lecture"
@@ -198,7 +192,7 @@
                                             </div>{{/if}}
                                     </div>
                                     <div class="panel-body">{{{description}}}</div>
-                                    <h4 style="margin-left: 1em;">Files</h4>
+                                    <h4 style="margin-left: 1em;">Матеріали лекції:</h4>
                                     {{#if lectureFiles.count}}
                                         <ul>
                                             {{#each lectureFiles}}
@@ -222,7 +216,7 @@
                                                data-id="{{_id}}"/>
                                     {{/if}}
                                     {{#if tests.count}}
-                                        <h4 style="margin-left: 1em;">Tests</h4>
+                                        <h4 style="margin-left: 1em;">Тестові завдання:</h4>
                                         <ul>
                                             {{#each tests}}
                                                 <li>
@@ -257,7 +251,7 @@
                         {{#if isTeacher}}
                             <div>
                                 <div class="btn-success btn" id="add-lecture" style="margin-bottom: 2em;">Додати
-                                    Заняття
+                                    Лекцію
                                 </div>
                             </div>
                         {{/if}}
